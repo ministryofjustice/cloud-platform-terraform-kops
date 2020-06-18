@@ -61,10 +61,10 @@ data "aws_subnet" "public_c" {
 }
 
 resource "local_file" "kops" {
-  filename = "./${terraform.workspace}.yaml"
+  filename = "${var.template_path}/${terraform.workspace}.yaml"
 
   content = templatefile("${path.module}/templates/kops.yaml.tpl", {
-    cluster_domain_name                  = var.cluster_base_domain_name
+    cluster_domain_name                  = var.cluster_domain_name
     cluster_node_count                   = var.cluster_node_count
     kops_state_store                     = var.kops_state_store
     oidc_issuer_url                      = var.oidc_issuer_url

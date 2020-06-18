@@ -1,14 +1,33 @@
-variable "vpc_name" {}
+variable "vpc_name" {
+  description = "The vpc_name where the cluster is going to be deployed"
+  type        = string
+}
 
-variable "cluster_base_domain_name" {}
+variable "cluster_domain_name" {
+  description = "The cluster domain used for externalDNS annotations and certmanager"
+  type = string
+}
 
-variable "auth0_client_id" {}
+variable "auth0_client_id" {
+  description = ""
+  type = string
+}
+
+variable "oidc_issuer_url" {}
+
+variable "template_path" {
+  type = string
+  description = "Path where the rendered templated is saved, the file is needed by create-cluster.rb script under kops/ folder"
+}
 
 variable "kops_state_store" {
-    type = string
+  type = string
+  description = "The S3 bucket where kops state is going to be saved"
 }
-variable "authorized_keys_manager" {}
-variable "oidc_issuer_url" {}
+
+variable "authorized_keys_manager" {
+  description = "The authorized SSH keys that are going to be included in the cluster" 
+}
 
 variable "cluster_node_count" {
   description = "The number of worker node in the cluster"
