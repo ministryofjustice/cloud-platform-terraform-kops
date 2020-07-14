@@ -60,6 +60,22 @@ data "aws_subnet" "public_c" {
   }
 }
 
+data "aws_subnet_ids" "private" {
+  vpc_id = data.aws_vpc.selected.id
+
+  tags = {
+    SubnetType = "Private"
+  }
+}
+
+data "aws_subnet_ids" "public" {
+  vpc_id = data.aws_vpc.selected.id
+
+  tags = {
+    SubnetType = "Utility"
+  }
+}
+
 resource "local_file" "kops" {
   filename = "${var.template_path}/${terraform.workspace}.yaml"
 
