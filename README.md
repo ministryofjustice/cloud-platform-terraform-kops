@@ -1,44 +1,29 @@
-# cloud-platform-terraform-_template_
+# cloud-platform-terraform-kops
 
-[![Releases](https://img.shields.io/github/release/ministryofjustice/cloud-platform-terraform-template/all.svg?style=flat-square)](https://github.com/ministryofjustice/cloud-platform-terraform-template/releases)
-
-_note: Please remove all comments in italics and fill where required>_
-
-_Short describion of the module_
-_This Terraform module ......_
+cloud-platform-terraform-kops generates the kops manifest consumed by our kubernetes clusters. To build the manifest we need to include different resources as requirements: subnets, VPC, AZs, cidrs, etc.
 
 ## Usage
 
-_Describe how to use the module_
-_example_:
-
 ```hcl
-module "example_sqs" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sqs?ref=version"
+module "kops" {
+  source = "github.com/ministryofjustice/cloud-platform-terraform-kops?ref=0.0.1"
 
-  environment-name       = "example-env"
-  team_name              = "cloud-platform"
-  infrastructure-support = "example-team@digtal.justice.gov.uk"
-  application            = "exampleapp"
-  sqs_name               = "examplesqsname"
+  vpc_name                = local.vpc_name
+  cluster_domain_name     = trimsuffix(local.cluster_base_domain_name, ".")
+  kops_state_store        = data.terraform_remote_state.global.outputs.kops_state_s3_bucket_name[0]
+  auth0_client_id         = module.auth0.oidc_kubernetes_client_id
+  authorized_keys_manager = module.bastion.authorized_keys_manager
 
-  # Set encrypt_sqs_kms = "true", to enable SSE for SQS using KMS key.
-  encrypt_sqs_kms = "false"
+  cluster_node_count       = lookup(var.cluster_node_count, terraform.workspace, var.cluster_node_count["default"])
+  master_node_machine_type = lookup(var.master_node_machine_type, terraform.workspace, var.master_node_machine_type["default"])
+  worker_node_machine_type = lookup(var.worker_node_machine_type, terraform.workspace, var.worker_node_machine_type["default"])
+  enable_large_nodesgroup  = lookup(var.enable_large_nodesgroup, terraform.workspace, var.enable_large_nodesgroup["default"])
 
-  # existing_user_name     = module.another_sqs_instance.user_name
-  
-  # NB: If you want multiple queues to share an IAM user, you must create one queue first,
-  # letting it create the IAM user. Then, in a separate PR, you can create all the other
-  # queues. Otherwise terraform cannot resolve the cyclic dependency of creating multiple
-  # queues but one IAM user, because it cannot work out which queue will successfully
-  # create the user, and which queues will reuse that user.
-
-  providers = {
-    aws = aws.london
-  }
+  template_path   = "../../../../kops"
+  oidc_issuer_url = "https://${var.auth0_tenant_domain}/"
 }
-
 ```
+
 ## Inputs
 
 _Describe what to pass the module_
@@ -46,46 +31,19 @@ _example_:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| visibility_timeout_seconds | The visibility timeout for the queue | integer | `30` | no |
-| message_retention_seconds | The number of seconds Amazon SQS retains a message| integer | `345600` | no |
-| max_message_size | Max message size in bytes | integer | `262144` | no |
-| delay_seconds | Seconds that message will be delayed for | integer | `0` | no |
-| receive_wait_time_seconds | Seconds for which a ReceiveMessage call will wait for a message to arrive | integer | `0` | no |
-| kms_master_key_id | The ID of an AWS-managed customer master key | string | - | no |
-| kms_data_key_reuse_period_seconds | Seconds for which Amazon SQS can reuse a data key | integer | `0` | no |
-| existing_user_name | if set, adds a policy rather than creating a new IAM user | string | - | no |
-| redrive_policy | if set, specifies the ARN of the "DeadLetter" queue | string | - | no |
-| encrypt_sqs_kms | if set to true, it enables SSE for SQS using KMS key | string | `false` | no |
+| vpc_name | The vpc_name where the cluster is going to be deployed | string |  | yes |
+| cluster_domain_name | The cluster domain used for externalDNS annotations and certmanager | string |  | yes |
+| auth0_client_id | Auth0 Client ID (used to authenticate to the cluster) | string | | yes |
+| oidc_issuer_url |  | string | `0` | no |
+| template_path | Path where the rendered templated is saved, the file is needed by create-cluster.rb script under kops/ folder | string | | yes |
+| kops_state_store | The S3 bucket where kops state is going to be saved | string |  | no |
+| authorized_keys_manager | The authorized SSH keys that are going to be included in the cluster | string |  | yes |
+| cluster_node_count | The number of worker node in the cluster | string | - | no |
+| master_node_machine_type | The AWS EC2 instance types to use for master nodes | string | - | no |
+| worker_node_machine_type | The AWS EC2 instance types to use for worker nodes | string |  | no |
+| enable_large_nodesgroup | Due to Prometheus resource consumption we added a larger node groups (r5.2xlarge), this variable you enable the creation of it | string | `` | no |
 
-
-## Tags
-
-Some of the inputs are tags. All infrastructure resources need to be tagged according to the [MOJ techincal guidance](https://ministryofjustice.github.io/technical-guidance/standards/documenting-infrastructure-owners/#documenting-owners-of-infrastructure). The tags are stored as variables that you will need to fill out as part of your module.
-
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| application |  | string | - | yes |
-| business-unit | Area of the MOJ responsible for the service | string | `mojdigital` | yes |
-| environment-name |  | string | - | yes |
-| infrastructure-support | The team responsible for managing the infrastructure. Should be of the form team-email | string | - | yes |
-| is-production |  | string | `false` | yes |
-| team_name |  | string | - | yes |
-| sqs_name |  | string | - | yes |
 
 ## Outputs
 
-_Describe the outputs_
-_example_
-
-| Name | Description |
-|------|-------------|
-| access_key_id | Access key id for the credentials. |
-| secret_access_key | Secret for the new credentials. |
-| sqs_id | The URL for the created Amazon SQS queue. |
-| sqs_arn | The ARN of the SQS queue. |
-| user_name | to be used for other queues that have `existing_user_name` set |
-| sqs_name | The name of the SQS queue |
-
-## Reading Material
-
-_add link to external source_
+No outputs
