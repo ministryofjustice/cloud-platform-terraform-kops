@@ -26,9 +26,6 @@ module "kops" {
 
 ## Inputs
 
-_Describe what to pass the module_
-_example_:
-
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | vpc_name | The vpc_name where the cluster is going to be deployed | string |  | yes |
