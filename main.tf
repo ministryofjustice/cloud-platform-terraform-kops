@@ -98,7 +98,7 @@ resource "aws_security_group" "allow_tls" {
 
   tags = {
     Name = "additional-node-sg-${var.cluster_domain_name}",
-    KubernetesCluster = data.terraform_remote_state.cluster.outputs.cluster_domain_name
+    KubernetesCluster = var.cluster_domain_name
   }
 }
 
