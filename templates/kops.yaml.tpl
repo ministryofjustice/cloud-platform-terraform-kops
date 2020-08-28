@@ -179,6 +179,8 @@ spec:
     rbac: {}
   channel: stable
   cloudProvider: aws
+  cloudConfig:
+    disableSecurityGroupIngress: true
   sshKeyName: ${cluster_domain_name}
   configBase: s3://${kops_state_store}/${cluster_domain_name}
   dnsZone: ${cluster_domain_name}
@@ -453,6 +455,7 @@ spec:
     owner: cloud-platform:platforms@digital.justice.gov.uk
     source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
   role: Node
+  securityGroupOverride: ${additonal_sg_id}
   subnets:
   - eu-west-2a
   - eu-west-2b

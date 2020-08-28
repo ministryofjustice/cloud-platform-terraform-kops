@@ -76,6 +76,32 @@ data "aws_subnet_ids" "public" {
   }
 }
 
+resource "aws_security_group" "allow_tls" {
+  name        = "additional-node-sg-${var.cluster_domain_name}"
+  description = "Additional security group for nodes"
+  vpc_id      = data.aws_vpc.selected.id
+
+  ingress {
+    description = "generic rule for nlb"
+    from_port   = 30000
+    to_port     = 35000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "additional-node-sg-${var.cluster_domain_name}",
+    KubernetesCluster = data.terraform_remote_state.cluster.outputs.cluster_domain_name
+  }
+}
+
 resource "local_file" "kops" {
   filename = "${var.template_path}/${terraform.workspace}.yaml"
 
@@ -98,6 +124,7 @@ resource "local_file" "kops" {
     worker_node_machine_type             = var.worker_node_machine_type
     master_node_machine_type             = var.master_node_machine_type
     enable_large_nodesgroup              = var.enable_large_nodesgroup
+    additonal_sg_id                      = aws_security_group.allow_tls.id
   })
 }
 
