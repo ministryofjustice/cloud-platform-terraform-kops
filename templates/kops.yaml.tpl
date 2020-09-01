@@ -455,7 +455,8 @@ spec:
     owner: cloud-platform:platforms@digital.justice.gov.uk
     source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
   role: Node
-  securityGroupOverride: ${additonal_sg_id}
+  additionalSecurityGroups: 
+  - ${additonal_sg_id}
   subnets:
   - eu-west-2a
   - eu-west-2b
