@@ -29,9 +29,19 @@ variable "authorized_keys_manager" {
   description = "The authorized SSH keys that are going to be included in the cluster" 
 }
 
-variable "cluster_node_count" {
-  description = "The number of worker node in the cluster"
-  default     = "3"
+variable "cluster_node_count_a" {
+  description = "The number of worker node in the cluster in Availability Zone eu-west-2a"
+  default     = "1"
+}
+
+variable "cluster_node_count_b" {
+  description = "The number of worker node in the cluster in Availability Zone eu-west-2b"
+  default     = "1"
+}
+
+variable "cluster_node_count_c" {
+  description = "The number of worker node in the cluster in Availability Zone eu-west-2c"
+  default     = "1"
 }
 
 variable "master_node_machine_type" {
