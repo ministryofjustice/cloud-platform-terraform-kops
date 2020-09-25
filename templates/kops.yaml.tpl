@@ -423,7 +423,7 @@ spec:
 
 ########################################################################################################################################
 #                                                                                                                                      #
-# NOTE: Label "cloud-platform-recycle-nodes: true" in this multiple Availability Zone InstanceGroups, used for node-recycler.          #
+# NOTE: Label 'cloud-platform-recycle-nodes: "true"' in this multiple Availability Zone InstanceGroups, used for node-recycler.        #
 #                                                                                                                                      #
 # https://github.com/ministryofjustice/cloud-platform-infrastructure/blob/091ff8cc054fb2f87734edef8de28dd31d71b0b2/recycle-node.rb#L93 #
 #                                                                                                                                      #
@@ -435,7 +435,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-    cloud-platform-recycle-nodes: true
+    cloud-platform-recycle-nodes: "true"
   name: nodes-1.16.13-eu-west-2a
 spec:
   image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
@@ -465,7 +465,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-    cloud-platform-recycle-nodes: true
+    cloud-platform-recycle-nodes: "true"
   name: nodes-1.16.13-eu-west-2b
 spec:
   image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
@@ -495,7 +495,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-    cloud-platform-recycle-nodes: true
+    cloud-platform-recycle-nodes: "true"
   name: nodes-1.16.13-eu-west-2c
 spec:
   image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
