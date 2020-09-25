@@ -423,7 +423,7 @@ spec:
 
 ########################################################################################################################################
 #                                                                                                                                      #
-# NOTE: This InstanceGroup must always be the last entry in this file, for the node-recycler.                                          #
+# NOTE: This multiple Availability Zone InstanceGroups must always be the last entry in this file, for the node-recycler.              #
 #                                                                                                                                      #
 # https://github.com/ministryofjustice/cloud-platform-infrastructure/blob/091ff8cc054fb2f87734edef8de28dd31d71b0b2/recycle-node.rb#L85 #
 #                                                                                                                                      #
