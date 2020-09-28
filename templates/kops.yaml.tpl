@@ -423,9 +423,9 @@ spec:
 
 ########################################################################################################################################
 #                                                                                                                                      #
-# NOTE: This InstanceGroup must always be the last entry in this file, for the node-recycler.                                          #
+# NOTE: Label 'cloud-platform-recycle-nodes: "true"' in this multiple Availability Zone InstanceGroups, used for node-recycler.        #
 #                                                                                                                                      #
-# https://github.com/ministryofjustice/cloud-platform-infrastructure/blob/091ff8cc054fb2f87734edef8de28dd31d71b0b2/recycle-node.rb#L85 #
+# https://github.com/ministryofjustice/cloud-platform-infrastructure/blob/091ff8cc054fb2f87734edef8de28dd31d71b0b2/recycle-node.rb#L93 #
 #                                                                                                                                      #
 ########################################################################################################################################
 
@@ -435,15 +435,16 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-  name: nodes-1.16.13
+    cloud-platform-recycle-nodes: "true"
+  name: nodes-1.16.13-eu-west-2a
 spec:
   image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
   machineType: ${worker_node_machine_type}
-  maxSize: ${cluster_node_count}
-  minSize: ${cluster_node_count}
+  maxSize: ${cluster_node_count_a}
+  minSize: ${cluster_node_count_a}
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: nodes-1.16.13
+    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2a
   cloudLabels:
     application: moj-cloud-platform
     business-unit: platforms
@@ -455,5 +456,63 @@ spec:
   role: Node
   subnets:
   - eu-west-2a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: ${cluster_domain_name}
+    cloud-platform-recycle-nodes: "true"
+  name: nodes-1.16.13-eu-west-2b
+spec:
+  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  machineType: ${worker_node_machine_type}
+  maxSize: ${cluster_node_count_b}
+  minSize: ${cluster_node_count_b}
+  rootVolumeSize: 256
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2b
+  cloudLabels:
+    application: moj-cloud-platform
+    business-unit: platforms
+    is-production: "true"
+    k8s.io/cluster/${cluster_domain_name}: ""
+    role: node
+    owner: cloud-platform:platforms@digital.justice.gov.uk
+    source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
+  role: Node
+  subnets:
   - eu-west-2b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: ${cluster_domain_name}
+    cloud-platform-recycle-nodes: "true"
+  name: nodes-1.16.13-eu-west-2c
+spec:
+  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  machineType: ${worker_node_machine_type}
+  maxSize: ${cluster_node_count_c}
+  minSize: ${cluster_node_count_c}
+  rootVolumeSize: 256
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2c
+  cloudLabels:
+    application: moj-cloud-platform
+    business-unit: platforms
+    is-production: "true"
+    k8s.io/cluster/${cluster_domain_name}: ""
+    role: node
+    owner: cloud-platform:platforms@digital.justice.gov.uk
+    source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
+  role: Node
+  subnets:
   - eu-west-2c

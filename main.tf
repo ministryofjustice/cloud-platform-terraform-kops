@@ -81,7 +81,9 @@ resource "local_file" "kops" {
 
   content = templatefile("${path.module}/templates/kops.yaml.tpl", {
     cluster_domain_name                  = var.cluster_domain_name
-    cluster_node_count                   = var.cluster_node_count
+    cluster_node_count_a                 = var.cluster_node_count_a
+    cluster_node_count_b                 = var.cluster_node_count_b
+    cluster_node_count_c                 = var.cluster_node_count_c
     kops_state_store                     = var.kops_state_store
     oidc_issuer_url                      = var.oidc_issuer_url
     oidc_client_id                       = var.auth0_client_id
