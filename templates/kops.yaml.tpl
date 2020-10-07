@@ -250,7 +250,7 @@ spec:
     metricsBindAddress: 0.0.0.0
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.16.13
+  kubernetesVersion: 1.17.12
   masterPublicName: api.${cluster_domain_name}
   networkCIDR: ${network_cidr_block}
   networkID: ${network_id}
@@ -313,7 +313,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2a
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -340,7 +340,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2b
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -367,7 +367,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2c
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -394,15 +394,15 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-  name: 2xlarge-nodes-1.16.13
+  name: 2xlarge-nodes-1.17.12
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: r5.2xlarge
   maxSize: 2
   minSize: 2
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: 2xlarge-nodes-1.16.13
+    kops.k8s.io/instancegroup: 2xlarge-nodes-1.17.12
   cloudLabels:
     application: moj-cloud-platform
     business-unit: platforms
@@ -436,15 +436,15 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
-  name: nodes-1.16.13-eu-west-2a
+  name: nodes-1.17.12-eu-west-2a
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${worker_node_machine_type}
   maxSize: ${cluster_node_count_a}
   minSize: ${cluster_node_count_a}
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2a
+    kops.k8s.io/instancegroup: nodes-1.17.12-eu-west-2a
   cloudLabels:
     application: moj-cloud-platform
     business-unit: platforms
@@ -466,15 +466,15 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
-  name: nodes-1.16.13-eu-west-2b
+  name: nodes-1.17.12-eu-west-2b
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${worker_node_machine_type}
   maxSize: ${cluster_node_count_b}
   minSize: ${cluster_node_count_b}
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2b
+    kops.k8s.io/instancegroup: nodes-1.17.12-eu-west-2b
   cloudLabels:
     application: moj-cloud-platform
     business-unit: platforms
@@ -496,15 +496,15 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
-  name: nodes-1.16.13-eu-west-2c
+  name: nodes-1.17.12-eu-west-2c
 spec:
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${worker_node_machine_type}
   maxSize: ${cluster_node_count_c}
   minSize: ${cluster_node_count_c}
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: nodes-1.16.13-eu-west-2c
+    kops.k8s.io/instancegroup: nodes-1.17.12-eu-west-2c
   cloudLabels:
     application: moj-cloud-platform
     business-unit: platforms
