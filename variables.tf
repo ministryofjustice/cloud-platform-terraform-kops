@@ -61,7 +61,7 @@ variable "enable_large_nodesgroup" {
 }
 
 variable "enable_ingress_nodesgroup" {
-  description = "Production clusters now have their own dedicated nodes for ingress controllers. By setting this option to true, you will create a dedicated node for ingress"
+  description = "Production clusters now have their own dedicated nodes for ingress controllers. By setting this option to true, three new nodes will be created."
   type        = bool
   default     = true
 }

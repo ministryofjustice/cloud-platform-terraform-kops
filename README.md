@@ -18,7 +18,7 @@ module "kops" {
   master_node_machine_type = lookup(var.master_node_machine_type, terraform.workspace, var.master_node_machine_type["default"])
   worker_node_machine_type = lookup(var.worker_node_machine_type, terraform.workspace, var.worker_node_machine_type["default"])
   enable_large_nodesgroup  = lookup(var.enable_large_nodesgroup, terraform.workspace, var.enable_large_nodesgroup["default"])
-  enable_ingress_nodesgroup  = lookup(var.enable_ingresse_nodesgroup, terraform.workspace, var.enable_ingress_nodesgroup["default"])
+  enable_ingress_nodesgroup  = lookup(var.enable_ingress_nodesgroup, terraform.workspace, var.enable_ingress_nodesgroup["default"])
 
   template_path   = "../../../../kops"
   oidc_issuer_url = "https://${var.auth0_tenant_domain}/"
