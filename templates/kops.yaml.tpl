@@ -419,7 +419,102 @@ spec:
 
 %{ endif }
 
+%{ if enable_ingress_nodesgroup }
+
 ---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: ${cluster_domain_name}
+  name: ingress-nodes-1.17.12-eu-west-2a
+spec:
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  machineType: c5.xlarge
+  maxSize: 1
+  minSize: 1
+  rootVolumeSize: 256
+  nodeLabels:
+    kops.k8s.io/instancegroup: ingress-nodes-1.17.12-eu-west-2a
+  cloudLabels:
+    application: moj-cloud-platform
+    business-unit: platforms
+    is-production: "true"
+    k8s.io/cluster/${cluster_domain_name}: ""
+    role: node
+    owner: cloud-platform:platforms@digital.justice.gov.uk
+    source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
+  role: Node
+  taints:
+  - ingress-node=true:NoSchedule
+  subnets:
+  - eu-west-2a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: ${cluster_domain_name}
+  name: ingress-nodes-1.17.12-eu-west-2b
+spec:
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  machineType: c5.xlarge
+  maxSize: 1
+  minSize: 1
+  rootVolumeSize: 256
+  nodeLabels:
+    kops.k8s.io/instancegroup: ingress-nodes-1.17.12-eu-west-2b
+  cloudLabels:
+    application: moj-cloud-platform
+    business-unit: platforms
+    is-production: "true"
+    k8s.io/cluster/${cluster_domain_name}: ""
+    role: node
+    owner: cloud-platform:platforms@digital.justice.gov.uk
+    source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
+  role: Node
+  taints:
+  - ingress-node=true:NoSchedule
+  subnets:
+  - eu-west-2b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: ${cluster_domain_name}
+  name: ingress-nodes-1.17.12-eu-west-2c
+spec:
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  machineType: c5.xlarge
+  maxSize: 1
+  minSize: 1
+  rootVolumeSize: 256
+  nodeLabels:
+    kops.k8s.io/instancegroup: ingress-nodes-1.17.12-eu-west-2c
+  cloudLabels:
+    application: moj-cloud-platform
+    business-unit: platforms
+    is-production: "true"
+    k8s.io/cluster/${cluster_domain_name}: ""
+    role: node
+    owner: cloud-platform:platforms@digital.justice.gov.uk
+    source-code: https://github.com/ministryofjustice/cloud-platform-infrastructure
+  role: Node
+  taints:
+  - ingress-node=true:NoSchedule
+  subnets:
+  - eu-west-2c
+
+%{ endif }
 
 ########################################################################################################################################
 #                                                                                                                                      #
@@ -428,6 +523,8 @@ spec:
 # https://github.com/ministryofjustice/cloud-platform-infrastructure/blob/091ff8cc054fb2f87734edef8de28dd31d71b0b2/recycle-node.rb#L93 #
 #                                                                                                                                      #
 ########################################################################################################################################
+
+---
 
 apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup

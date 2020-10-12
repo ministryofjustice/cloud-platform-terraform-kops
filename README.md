@@ -18,6 +18,7 @@ module "kops" {
   master_node_machine_type = lookup(var.master_node_machine_type, terraform.workspace, var.master_node_machine_type["default"])
   worker_node_machine_type = lookup(var.worker_node_machine_type, terraform.workspace, var.worker_node_machine_type["default"])
   enable_large_nodesgroup  = lookup(var.enable_large_nodesgroup, terraform.workspace, var.enable_large_nodesgroup["default"])
+  enable_ingress_nodesgroup  = lookup(var.enable_ingress_nodesgroup, terraform.workspace, var.enable_ingress_nodesgroup["default"])
 
   template_path   = "../../../../kops"
   oidc_issuer_url = "https://${var.auth0_tenant_domain}/"
@@ -39,6 +40,7 @@ module "kops" {
 | master_node_machine_type | The AWS EC2 instance types to use for master nodes | string | - | no |
 | worker_node_machine_type | The AWS EC2 instance types to use for worker nodes | string |  | no |
 | enable_large_nodesgroup | Due to Prometheus resource consumption we added a larger node groups (r5.2xlarge), this variable you enable the creation of it | string | `` | no |
+| enable_ingress_nodesgroup | Production clusters now have their own dedicated nodes for ingress controllers. By setting this option to true, you will create a dedicated node for ingress | string | `` | no |
 
 
 ## Outputs
