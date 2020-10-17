@@ -597,6 +597,11 @@ metadata:
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: ${worker_node_machine_type}
+  mixedInstancesPolicy:
+    instances:
+%{ for instance in worker_node_mixed_instance ~}
+    - ${instance}
+%{ endfor ~}
   maxSize: ${cluster_node_count_c}
   minSize: ${cluster_node_count_c}
   rootVolumeSize: 256
