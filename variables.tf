@@ -68,5 +68,5 @@ variable "enable_ingress_nodesgroup" {
 
 variable "worker_node_mixed_instance" {
   description = "The AWS mixed EC2 instance types to use for worker nodes, https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md#mixedinstancespolicy-aws-only"
-  default     = ["r5.xlarge", "c5.xlarge", "r4.xlarge"]
+  default     = ["r5.2xlarge", "r4.2xlarge", "r4.xlarge"]
 }
