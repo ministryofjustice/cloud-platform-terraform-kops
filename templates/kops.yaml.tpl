@@ -208,6 +208,8 @@ spec:
       kmsKeyId: "${ kms_key }"
     name: main
     version: 3.3.10
+    cpuRequest: 1000m
+    memoryRequest: 2000Mi
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
@@ -232,6 +234,8 @@ spec:
       kmsKeyId: "${ kms_key }"
     name: events
     version: 3.3.10
+    cpuRequest: 1000m
+    memoryRequest: 2000Mi
   iam:
     allowContainerRegistry: true
     legacy: false
