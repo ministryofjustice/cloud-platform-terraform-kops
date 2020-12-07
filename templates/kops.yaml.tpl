@@ -188,16 +188,19 @@ spec:
     - instanceGroup: master-eu-west-2a
       name: a
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: main
@@ -206,16 +209,19 @@ spec:
     - instanceGroup: master-eu-west-2a
       name: a
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
       volumeType: gp3
+      volumeSize: 256
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: events
