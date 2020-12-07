@@ -209,7 +209,7 @@ spec:
     name: main
     version: 3.3.10
     cpuRequest: 1000m
-    memoryRequest: 2000Mi
+    memoryRequest: 1000Mi
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
@@ -235,7 +235,7 @@ spec:
     name: events
     version: 3.3.10
     cpuRequest: 1000m
-    memoryRequest: 2000Mi
+    memoryRequest: 1000Mi
   iam:
     allowContainerRegistry: true
     legacy: false
