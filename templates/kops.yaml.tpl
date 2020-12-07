@@ -187,20 +187,23 @@ spec:
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: main
@@ -208,20 +211,23 @@ spec:
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
-      volumeType: gp3
-      volumeSize: 256
+      volumeType: io1
+      volumeSize: 40
+      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: events
