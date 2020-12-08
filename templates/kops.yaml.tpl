@@ -535,7 +535,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
   annotations:
-    node.alpha.kubernetes.io/ttl: 3
+    node.alpha.kubernetes.io/ttl: "3"
   name: nodes-1.17.12-eu-west-2a
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
@@ -572,7 +572,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
   annotations:
-    node.alpha.kubernetes.io/ttl: 3
+    node.alpha.kubernetes.io/ttl: "3"
   name: nodes-1.17.12-eu-west-2b
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
@@ -609,7 +609,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
   annotations:
-    node.alpha.kubernetes.io/ttl: 3
+    node.alpha.kubernetes.io/ttl: "3"
   name: nodes-1.17.12-eu-west-2c
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
