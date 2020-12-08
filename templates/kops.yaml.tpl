@@ -187,55 +187,33 @@ spec:
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: main
     version: 3.3.10
-    cpuRequest: 1000m
-    memoryRequest: 1000Mi
   - etcdMembers:
     - instanceGroup: master-eu-west-2a
       name: a
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2b
       name: b
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     - instanceGroup: master-eu-west-2c
       name: c
-      volumeType: io1
-      volumeSize: 40
-      volumeIops: 2000
       encryptedVolume: true
       kmsKeyId: "${ kms_key }"
     name: events
     version: 3.3.10
-    cpuRequest: 1000m
-    memoryRequest: 1000Mi
   iam:
     allowContainerRegistry: true
     legacy: false
@@ -556,6 +534,8 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
+  annotations:
+    node.alpha.kubernetes.io/ttl: 3
   name: nodes-1.17.12-eu-west-2a
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
@@ -591,6 +571,8 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
+  annotations:
+    node.alpha.kubernetes.io/ttl: 3
   name: nodes-1.17.12-eu-west-2b
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
@@ -626,6 +608,8 @@ metadata:
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
     cloud-platform-recycle-nodes: "true"
+  annotations:
+    node.alpha.kubernetes.io/ttl: 3
   name: nodes-1.17.12-eu-west-2c
 spec:
   image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
