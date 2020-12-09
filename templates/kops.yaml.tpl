@@ -217,10 +217,11 @@ spec:
   iam:
     allowContainerRegistry: true
     legacy: false
-  kubelet:
-    anonymousAuth: false
-    readOnlyPort: 0
-    authenticationTokenWebhook: true
+  # kubelet:
+  #   anonymousAuth: false
+  #   readOnlyPort: 0
+  #   authenticationTokenWebhook: true
+  #   cacheTTL: "2m"
   kubeAPIServer:
     oidcClientID: ${oidc_client_id}
     oidcIssuerURL: ${oidc_issuer_url}
