@@ -251,7 +251,7 @@ spec:
     metricsBindAddress: 0.0.0.0
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.17.12
+  kubernetesVersion: 1.18.2
   masterPublicName: api.${cluster_domain_name}
   networkCIDR: ${network_cidr_block}
   networkID: ${network_id}
