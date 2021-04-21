@@ -314,7 +314,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2a
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -341,7 +341,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2b
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -368,7 +368,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: master-eu-west-2c
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${master_node_machine_type}
   maxSize: 1
   minSize: 1
@@ -397,7 +397,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: 2xlarge-nodes-1.17.12
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: r5.2xlarge
   maxSize: 2
   minSize: 2
@@ -432,7 +432,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: ingress-nodes-1.17.12-eu-west-2a
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: c5.xlarge
   maxSize: 1
   minSize: 1
@@ -463,7 +463,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: ingress-nodes-1.17.12-eu-west-2b
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: c5.xlarge
   maxSize: 1
   minSize: 1
@@ -494,7 +494,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_domain_name}
   name: ingress-nodes-1.17.12-eu-west-2c
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: c5.xlarge
   maxSize: 1
   minSize: 1
@@ -536,7 +536,7 @@ metadata:
     cloud-platform-recycle-nodes: "true"
   name: nodes-1.17.12-eu-west-2a
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${worker_node_machine_type}
   mixedInstancesPolicy:
     instances:
@@ -571,7 +571,7 @@ metadata:
     cloud-platform-recycle-nodes: "true"
   name: nodes-1.17.12-eu-west-2b
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${worker_node_machine_type}
   mixedInstancesPolicy:
     instances:
@@ -606,7 +606,7 @@ metadata:
     cloud-platform-recycle-nodes: "true"
   name: nodes-1.17.12-eu-west-2c
 spec:
-  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: ${worker_node_machine_type}
   mixedInstancesPolicy:
     instances:
