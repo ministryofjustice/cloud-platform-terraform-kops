@@ -100,7 +100,6 @@ resource "local_file" "kops" {
     worker_node_machine_type             = var.worker_node_machine_type
     master_node_machine_type             = var.master_node_machine_type
     enable_large_nodesgroup              = var.enable_large_nodesgroup
-    enable_ingress_nodesgroup            = var.enable_ingress_nodesgroup
     worker_node_mixed_instance           = var.worker_node_mixed_instance
   })
 }
