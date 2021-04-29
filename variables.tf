@@ -60,12 +60,6 @@ variable "enable_large_nodesgroup" {
   default     = true
 }
 
-variable "enable_ingress_nodesgroup" {
-  description = "Production clusters now have their own dedicated nodes for ingress controllers. By setting this option to true, three new nodes will be created."
-  type        = bool
-  default     = true
-}
-
 variable "worker_node_mixed_instance" {
   description = "The AWS mixed EC2 instance types to use for worker nodes, https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md#mixedinstancespolicy-aws-only"
   default     = ["r5.2xlarge", "r4.2xlarge", "r4.xlarge"]
