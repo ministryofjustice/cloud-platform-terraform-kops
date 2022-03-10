@@ -395,15 +395,15 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-  name: 2xlarge-nodes-1.18.2
+  name: xlarge-nodes-1.18.2
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
-  machineType: r5.2xlarge
+  machineType: r5.xlarge
   maxSize: 2
   minSize: 2
   rootVolumeSize: 256
   nodeLabels:
-    kops.k8s.io/instancegroup: 2xlarge-nodes-1.18.2
+    kops.k8s.io/instancegroup: xlarge-nodes-1.18.2
     cloud-platform.justice.gov.uk/monitoring-ng: "true"
   cloudLabels:
     application: moj-cloud-platform
