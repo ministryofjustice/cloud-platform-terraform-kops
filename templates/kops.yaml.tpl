@@ -395,7 +395,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${cluster_domain_name}
-  name: xlarge-nodes-1.18.2
+  name: 2xlarge-nodes-1.18.2
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210325
   machineType: r5.xlarge
